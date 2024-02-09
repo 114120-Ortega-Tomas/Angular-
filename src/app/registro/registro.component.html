@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="container centrado " style="margin-bottom: 40px;" > 
+        <form class="col-md-9 sombra" (ngSubmit)="OnSubmit()" [formGroup]="form" style="margin-top: 30px ;border: solid 1px black; ">
+            <div class="centrado">
+                <h2>Nuevo Usuario</h2>
+            </div>
+            <div class="container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 margen">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" formControlName="nombre" id="nombre "
+                            [ngClass]="{ 'is-invalid': submitted && form.controls['nombre'].errors }">
+                            <div  style="color: red;" *ngIf="form.get('nombre')?.hasError('required') && (form.get('nombre')?.touched || submitted)">
+                            Debe ingresar un nombre Obligatoriamente</div>
+                        </div>
+                        
+                        <div class="col-md-6 margen">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" class="form-control" formControlName="apellido" id="apellido"
+                            [ngClass]="{ 'is-invalid': submitted && form.controls['apellido'].errors }">
+                            <div  style="color: red;" *ngIf="form.get('apellido')?.hasError('required') && (form.get('apellido')?.touched || submitted)">
+                            Debe ingresar un apellido Obligatoriamente</div>
+                        </div>   
+                </div>
+                <div class="row">
+                    <div class="col-md-6 margen ">
+                        <label for="pais">Pais</label>
+                        <select name="pais" id="pais" class="form-select" formControlName="pais" [ngClass]="{ 'is-invalid': (submitted || form.controls['pais'].touched) && form.controls['pais'].errors }">
+                            <option value=""  selected disabled="true" >Seleccione un pais</option>
+                            <option value="Argentina">Argentina</option>
+                            <option value="EE.UU.">EE.UU.</option>
+                            <option value="Uruguay">Uruguay</option>
+                        </select>
+                        <div *ngIf="form.get('pais')?.hasError('required') && (form.get('pais')?.touched || submitted)" style="color: red;">Debe seleccionar un pais</div>
+                    </div>
+                    <div class="col-md-6  margen">
+                        <label for="ciudad">Ciudad</label>
+                        <select name="ciudad" id="ciudad" class="form-select" formControlName="ciudad" [ngClass]="{ 'is-invalid': (submitted || form.controls['ciudad'].touched) && form.controls['ciudad'].errors }" >
+                            <option value=""  selected disabled="true" >Seleccione una Ciudad</option>
+                            <option *ngFor="let item of provincias" value="{{item}}">{{item}}</option>
+                        </select>
+                        <div style="color: red;" *ngIf="form.get('pais')?.hasError('required') && (form.get('pais')?.touched || submitted)">
+                        Debe seleccionar una ciudad </div>
+                    </div>   
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6  margen">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" formControlName="email" id="email"[ngClass]="{ 'is-invalid': (submitted || form.controls['email'].touched) && form.controls['email'].errors }">
+                        <div style="color: red;" *ngIf="form.get('email')?.hasError('required') && (form.get('email')?.touched || submitted)">Debe ingresar un email</div>
+                    </div>
+                    <div class="col-md-6 margen">
+                        <label for="contraseña">Contraseña</label>
+                        <input type="text" class="form-control" formControlName="contraseña" id="contraseña"[ngClass]="{ 'is-invalid': (submitted || form.controls['contraseña'].touched) && form.controls['contraseña'].errors }">
+                        <div style="color: red;" *ngIf="form.get('contraseña')?.hasError('required') && (form.get('contraseña')?.touched || submitted)">Debe ingresar una contraseña</div>
+                        <div style="color: red;" *ngIf="form.get('contraseña')?.hasError('minlength') && (form.get('contraseña')?.touched || submitted)">La contraseña debe tener al menos 6 caracteres</div>
+
+                    </div>   
+                </div>
+                <div class="row">
+                    <div class="col-md-6 margen">
+                        <label for="tel">Nro Telefono</label>
+                        <input type="text" class="form-control" formControlName="tel" id="tel">
+                    </div>
+                    <div class="col-md-6 margen">
+                        <label for="nac">Fecha Nacimiento</label>
+                        <input type="date" class="form-control" formControlName="nac" id="nac">
+                    </div>   
+                </div>
+                <div class="row">
+                    <button type="submit" class="btn btn-primary margen">Guardar Perfil</button>
+                </div>
+                </div>
+            </div>
+            
+        </form>
+    
+    </div>
+</div>
+

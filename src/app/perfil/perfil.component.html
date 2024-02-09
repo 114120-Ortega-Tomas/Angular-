@@ -1,0 +1,119 @@
+
+<div class="container">
+    <div class="row container" style="margin-top: 50px;">
+        <div class="col-md-4">
+            <div class="card sombra">
+                <h5 class="card-header">Imagen de Perfil</h5>
+                <div class="card-body">
+                  
+                  <a  type="button" class="btn btn-primary" style="display: flex; align-items: center;">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+       
+        <div class="col-md-8">
+            <div class="card sombra">
+                <h5 class="card-header">Detalles de la cuenta</h5>
+                <div class="card-body ">
+                    <div class="container">
+                        <form action="" [formGroup]="form" (ngSubmit)="ActualizarDatos()">
+                            <div class="row" style="margin-top: 20px;">
+                                <div class="col-md-12">
+                                    <label for="nombre">Nombre de usuario (como aparecera en el sistema)</label>
+                                    <input type="text" class="form-control" formControlName="username" id="username" placeholder="ingrese su nombre de usuario">
+                                </div>
+                                <div style="color: red;" *ngIf="form.get('username')?.hasError('minlength') && (form.get('username')?.touched || submitted)">
+                                El username debe tener al menos 8 caracteres
+                                </div>
+                                <div style="color: red;" *ngIf="form.get('username')?.hasError('required') && (form.get('username')?.touched || submitted)">
+                                    debe ingresar un username 
+                                    </div>
+                                <div style="color: red;" *ngIf="form.get('username')?.hasError('maxlength') && (form.get('username')?.touched || submitted)">
+                                    El username no debe tener mas de 50 caracteres
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 20px;">
+                                <div class="col-md-6">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" class="form-control" formControlName="firstName" id="nombre" placeholder="ingrese su nombre">
+                                    <div style="color: red;" *ngIf="form.get('firstName')?.hasError('maxlength') && (form.get('firstName')?.touched || submitted)">
+                                        El nombre no debe tener mas de 20 caracteres
+                                    </div>
+                                    <div style="color: red;" *ngIf="form.get('firstName')?.hasError('required') && (form.get('firstName')?.touched || submitted)">
+                                        El nombre es requrido
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="nombre">Apellido</label>
+                                    <input type="text" class="form-control" formControlName="lastName" id="apellido"  placeholder="ingrese su apellido">
+                                    <div style="color: red;" *ngIf="form.get('lastName')?.hasError('maxlength') && (form.get('lastName')?.touched || submitted)">
+                                        El apellido no debe tener mas de 20 caracteres
+                                    </div>
+                                    <div style="color: red;" *ngIf="form.get('lastName')?.hasError('required') && (form.get('lastName')?.touched || submitted)">
+                                        Debe ingresar un apellido
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="row" style="margin-top: 20px;">
+                                <div class="col-md-6">
+                                    <label for="pais">Pais</label>
+                                    <select name="pais" id="pais" class="form-select" formControlName="country">
+                                        <option value="" disabled selected="true">Elija un pais</option>
+                                        <option value="Argentina">Argentina</option>
+                                        <option value="EE.UU.">EE.UU.</option>
+                                        <option value="Uruguay">Uruguay</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="provincia">Provincia</label>
+                                    <select name="pais" id="pais" class="form-select" formControlName="state" >
+                                        <option value=""  selected disabled="true" >Elija un pais</option>
+                                        <option value="{{item}}" *ngFor="let item of provincias">{{item}}</option>
+                                    </select>
+                                </div>
+                                <div style="color: red;" *ngIf="form.get('state')?.hasError('required') && (form.get('state')?.touched || submitted)">Debe seleccionar una Provincia</div>
+                                
+                            </div>
+                            <div class="row" style="margin-top: 20px;">
+                                <div class="col-md-12">
+                                    <label for="email">E-mail</label>
+                                    <input type="text" readonly class="form-control" formControlName="email" id="email" placeholder="ingrese su correo electronico">
+                                </div>
+                                <div style="color: red;" *ngIf="form.get('email')?.hasError('email') && (form.get('email')?.touched || submitted)">Email no valido></div>
+                                <div style="color: red;" *ngIf="form.get('email')?.hasError('required') && (form.get('email')?.touched || submitted)">debe ingresar un email</div>
+
+                            </div>
+                            <div class="row" style="margin-top: 20px;">
+                                <div class="col-md-6">
+                                    <label for="tel">Telefono</label>
+                                    <input type="text" class="form-control" formControlName="phoneNumber" id="tel" placeholder="555-123-456" >
+                                    <div style="color: red;" *ngIf="form.get('phoneNumber')?.hasError('required') && (form.get('phoneNumber')?.touched || submitted)">
+                                    Debe ingresar el telefono
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="fecha">Fecha de Nacimiento</label>
+                                    <input type="date" class="form-control" formControlName="birthDate" id="fecha" >
+                                    <div style="color: red;" *ngIf="form.get('birthDate')?.hasError('required') && (form.get('birthDate')?.touched || submitted)">debe ingresar una fecha</div>
+                                    <div style="color:red" *ngIf="form.get('birthDate')?.hasError('min') && (form.get('birthDate')?.touched || submitted)">La fecha debe estar entre los años 1950 y 2005</div>
+                                    <div style="color:red" *ngIf="form.get('birthDate')?.hasError('max') && (form.get('birthDate')?.touched || submitted)">La fecha debe estar entre los años 1950 y 2005</div>
+
+                                </div>
+                            </div>
+                            <div style="margin-top: 20px;" class="row">
+                                <button class="btn btn-primary">Guardar Cambios</button>
+                                <button class="btn btn-danger" style="margin-top: 20px;" (click)="LogOut()"> LOG OUT</button>
+                            </div>  
+
+                            
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+

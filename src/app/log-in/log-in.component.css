@@ -1,0 +1,79 @@
+.ovni {
+    position: relative;
+    width: 100px;
+    height: 60px;
+    background-color: #aaa;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    overflow: hidden;
+  }
+  
+  .cuerpo {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 80px;
+    background-color: #bbb;
+    border-radius: 50%;
+  }
+  
+  .luces {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #f00;
+    box-shadow: 0 0 10px #f00, 0 0 20px #f00, 0 0 30px #f00, 0 0 40px #f00, 0 0 50px #f00, 0 0 60px #f00, 0 0 70px #f00, 0 0 80px #f00;
+    animation: parpadeo 1s infinite alternate;
+  }
+  
+  @keyframes parpadeo {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.2;
+    }
+
+    
+}
+.sombra {
+    border-radius: 10px; /* Redondea los bordes */
+    box-shadow:  0px 4px 10px rgba(0, 0, 0, 0.5); /* Agrega una sombra suave */
+    /* Los valores en box-shadow son offsetX, offsetY, blurRadius, color */
+  }
+
+  .password-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  #password {
+    padding-right: 30px; /* Ajusta el espacio a la derecha para el icono */
+  }
+  .grupo{
+    position: relative;
+  }
+  .input-container {
+    position: relative;
+    width: 300px; /* ajusta el ancho según tus necesidades */
+    margin: 20px;
+  }
+
+  .icono-input {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px; /* ajusta la posición izquierda según tus necesidades */
+    color: #888; /* color del icono */
+  }
+
+  .input-con-icono {
+    padding-left: 30px; /* ajusta el espacio a la izquierda del texto según tus necesidades */
+    width: 100%;
+    box-sizing: border-box;
+  }

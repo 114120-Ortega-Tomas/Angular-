@@ -1,0 +1,5 @@
+.sombra {
+    border-radius: 10px; /* Redondea los bordes */
+    box-shadow:  0px 4px 10px rgba(0, 0, 0, 0.5); /* Agrega una sombra suave */
+    /* Los valores en box-shadow son offsetX, offsetY, blurRadius, color */
+  }
