@@ -17,6 +17,10 @@
     background-color: #bbb;
     border-radius: 50%;
   }
+  .password-container {
+    position: relative;
+    
+  }
   
   .luces {
     position: absolute;

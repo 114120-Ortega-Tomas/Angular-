@@ -20,17 +20,18 @@
                     <div class="col-md-3">
                         <label for="username" style="margin-top: 5px;">Contraseña</label>
                     </div>
-                    <div class="col-md-9    ">
-                            <input type="password" class="input-con-icono" [type]="ver ? 'text' : 'password'"  style="position: relative;" class="form-control" formControlName="password" id="password"  >
-                            
-                            <div *ngIf="ver===false">
-                                <i class="fas fa-eye" (click)="cambiar()"></i> 
+                        <div class="password-container col-md-9" style="position: relative;">
+                            <input type="{{ ver ? 'text' : 'password' }}" class="input-con-icono form-control" formControlName="password" id="password" style="width: 100%; padding-left: 10px;">
+                            <div *ngIf="!ver">
+                            <i class="fas fa-eye" (click)="cambiar()" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
                             </div>
-                            <div *ngIf="ver===true">
-                                <i class="fas fa-eye-slash" (click)="cambiar()"></i>
-                            </div>            
-                    </div> 
-                    
+                          
+                          <div *ngIf="ver">
+                            <i class="fas fa-eye-slash" (click)="cambiar()" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                          </div>
+                        </div>
+                     
+                      
                     
                    </div>
                    <div style="color: red;" *ngIf="form.get('password')?.hasError('required') && (form.get('password')?.touched || submitted)">
